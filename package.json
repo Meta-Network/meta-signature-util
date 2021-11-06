@@ -2,7 +2,7 @@
   "name": "meta-signature-util",
   "version": "0.0.1",
   "description": "meta-signature-util",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "keywords": [
     "signature"
   ],
