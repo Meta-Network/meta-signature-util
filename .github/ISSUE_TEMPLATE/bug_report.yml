@@ -1,0 +1,45 @@
+name: "Bug report"
+description: Create a bug report to help us improve
+body:
+- type: markdown
+  attributes:
+    value: |
+    Thank you for reporting an issue.
+- type: input
+  attributes:
+    label: Version
+    description: version in `package.json`.
+- type: input
+  attributes:
+    label: Platform
+    description: |
+      UNIX: output of `uname -a`
+      Windows: output of `"$([Environment]::OSVersion | ForEach-Object VersionString) $(if ([Environment]::Is64BitOperatingSystem) { "x64" } else { "x86" })"` in PowerShell console
+- type: textarea
+  attributes:
+    label: Steps to reproduce
+    description: Steps to reproduce the behavior.
+    placeholder: |
+      1. In this environment...
+      2. With this config...
+      3. Run '...'
+      4. See error...
+- type: textarea
+  attributes:
+    label: Your code to reproduce the bug
+    description: What code makes the bug happen?
+    render: typescript
+- type: textarea
+  attributes:
+    label: Screenshots
+    description: If applicable, add screenshots to help explain your problem.
+- type: textarea
+  attributes:
+    label: What is the expected behavior?
+- type: textarea
+  attributes:
+    label: What do you see instead?
+- type: textarea
+  attributes:
+    label: Additional information
+    description: Tell us anything else you think we should know.
