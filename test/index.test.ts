@@ -62,9 +62,12 @@ describe('test generateSeed', () => {
 });
 
 describe('test generateKeys', () => {
-  test("keys should be defined and they're Uint8Array", () => {
-    expect(keys.public).toBeInstanceOf(Uint8Array);
-    expect(keys.private).toBeInstanceOf(Uint8Array);
+  test('keys should be defined as 64 length hex string', () => {
+    expect(keys.public).toMatch(/0x\w{64}/);
+    expect(keys.private).toMatch(/0x\w{64}/);
+  });
+  test('public key should not equals to private key', () => {
+    expect(keys.public).not.toBe(keys.private);
   });
 });
 
@@ -97,7 +100,7 @@ describe('test generateSignature', () => {
     digestMetadata.digest,
   );
   const exceptedSignature =
-    '0xa376e5290d1f4e5562cb08b81ae79f777ca5dc6ebb35c23cc64892e4f88121fc3d1d2aedef30780eea604974d34a65f8d8cc1d243e26b9687e3aa050dd11248b';
+    '0x6126818053d24229a8da9564d3919152aea2e9155767b981afe1580698754eb450b52c114ce76deaadda8c42f96a4476229e11e40ca0c78f26c4aace129cab83';
 
   test('signature in result should be same as the excepted', () => {
     expect(authorSignatureMetadata.signature).toBe(exceptedSignature);
@@ -123,14 +126,17 @@ describe('test verifySignature', () => {
     authorSignatureMetadata,
     authorSignatureMetadata.digest,
   );
-  test('verify digest result should be true if metadata is unchanged', () => {
+  test('verify signature result should be true if public key is correct', () => {
     expect(verifiedResult).toBe(true);
   });
 
-  const digestMetadataCopy = { ...digestMetadata };
-  digestMetadataCopy.title = 'WE CHANGED THIS TITLE';
-  const notVerifiedResult = utils.verifyDigest(digestMetadataCopy);
-  test('verify digest result should be false if metadata is changed', () => {
-    expect(notVerifiedResult).toBe(false);
+  const authorSignatureMetadataCopy = { ...authorSignatureMetadata };
+  authorSignatureMetadataCopy.claim = 'another claim';
+  const verifiedResultSecond = utils.verifyMetadataSignature(
+    authorSignatureMetadataCopy,
+    authorSignatureMetadata.digest,
+  );
+  test('verify signature result should be false if metadata is changed', () => {
+    expect(verifiedResultSecond).toBe(false);
   });
 });
