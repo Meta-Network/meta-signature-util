@@ -1,10 +1,9 @@
-name: "Bug report"
+  name: "Bug report"
 description: Create a bug report to help us improve
 body:
 - type: markdown
   attributes:
-    value: |
-    Thank you for reporting an issue.
+    value: Thank you for reporting an issue.
 - type: input
   attributes:
     label: Version
@@ -43,3 +42,4 @@ body:
   attributes:
     label: Additional information
     description: Tell us anything else you think we should know.
+ 
