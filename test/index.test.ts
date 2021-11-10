@@ -82,7 +82,7 @@ describe('test generateDigest', () => {
     tags: 'Testing Tag, UnitTest',
   };
   const exceptedDigest =
-    '0x46ad03c511f5572059f92e114aa9d3e45821490a58bef57c6bd45ab799453346';
+    '0xed77fb2d572de7526cafe6d42adccf9e347c74f0ba342de41fd1c1aa458f6a1f';
   digestMetadata = utils.generatePostDigestRequestMetadata(payload);
 
   test('digest in result should be sha256 hash', () => {
@@ -100,7 +100,7 @@ describe('test generateSignature', () => {
     digestMetadata.digest,
   );
   const exceptedSignature =
-    '0x5a1c4b16e204f4929504bb09456602a0801d8aa0663734647cceb979b3c0c6b51cf0c9cb329a120de3647b9316c9160512f9ca19bf837c8fa3ddb461909eed8e';
+    '0x9ab3c80768805e7842a4c1733d47e007a35bdbcdb9a5899ed5c9df6fa353cc9ddf65e9675700e921c2aa70f895c77f3b13aa119811fccbe0cbf684c40b37d880';
 
   test('signature in result should be same as the excepted', () => {
     expect(authorSignatureMetadata.signature).toBe(exceptedSignature);
