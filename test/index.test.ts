@@ -100,7 +100,7 @@ describe('test generateSignature', () => {
     digestMetadata.digest,
   );
   const exceptedSignature =
-    '0x6126818053d24229a8da9564d3919152aea2e9155767b981afe1580698754eb450b52c114ce76deaadda8c42f96a4476229e11e40ca0c78f26c4aace129cab83';
+    '0x5a1c4b16e204f4929504bb09456602a0801d8aa0663734647cceb979b3c0c6b51cf0c9cb329a120de3647b9316c9160512f9ca19bf837c8fa3ddb461909eed8e';
 
   test('signature in result should be same as the excepted', () => {
     expect(authorSignatureMetadata.signature).toBe(exceptedSignature);
@@ -122,9 +122,8 @@ describe('test verifyDigest', () => {
 });
 
 describe('test verifySignature', () => {
-  const verifiedResult = utils.verifyMetadataSignature(
+  const verifiedResult = utils.verifyAuthorDigestMetadataSignature(
     authorSignatureMetadata,
-    authorSignatureMetadata.digest,
   );
   test('verify signature result should be true if public key is correct', () => {
     expect(verifiedResult).toBe(true);
@@ -132,9 +131,8 @@ describe('test verifySignature', () => {
 
   const authorSignatureMetadataCopy = { ...authorSignatureMetadata };
   authorSignatureMetadataCopy.claim = 'another claim';
-  const verifiedResultSecond = utils.verifyMetadataSignature(
+  const verifiedResultSecond = utils.verifyAuthorDigestMetadataSignature(
     authorSignatureMetadataCopy,
-    authorSignatureMetadata.digest,
   );
   test('verify signature result should be false if metadata is changed', () => {
     expect(verifiedResultSecond).toBe(false);

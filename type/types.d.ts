@@ -6,7 +6,18 @@ export type KeyPair = {
 export type KeyValuePair = [string, string];
 
 export type MetadataInPayload = {
-  hash: string;
+  nonce: string;
+  claim: string;
+};
+
+export type MetadataInPayloadWithDigest = {
+  digest: string;
+  nonce: string;
+  claim: string;
+};
+
+export type MetadataInPayloadWithSignature = {
+  signature: string;
   nonce: string;
   claim: string;
 };
