@@ -1,4 +1,6 @@
 src
+.github
+yarn-error.log
 
 # IDEs and editors
 /.idea
