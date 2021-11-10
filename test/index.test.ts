@@ -77,7 +77,7 @@ describe('test generateDigest', () => {
     categories: 'Meta Network,Testing',
     content: 'Some post content here...May be very long...',
     cover: 'https://cover.url.com/',
-    licence: 'CC BY 4.0',
+    license: 'CC BY 4.0',
     summary: 'Some post content here...',
     tags: 'Testing Tag, UnitTest',
   };
