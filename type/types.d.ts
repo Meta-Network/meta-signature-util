@@ -27,7 +27,7 @@ export type PostMetadata = {
   categories: string;
   content: string;
   cover: string;
-  licence: string;
+  license: string;
   summary: string;
   tags: string;
 };
@@ -41,7 +41,7 @@ export type AuthorDigestRequestMetadata = {
   categories: string;
   content: string;
   cover: string;
-  licence: string;
+  license: string;
   summary: string;
   tags: string;
   digest: string;

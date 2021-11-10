@@ -135,7 +135,7 @@ export const verifyDigest = (metadata: AuthorDigestRequestMetadata) => {
     categories: metadata.categories,
     content: metadata.content,
     cover: metadata.cover,
-    licence: metadata.licence,
+    license: metadata.license,
     summary: metadata.summary,
     tags: metadata.tags,
   };
