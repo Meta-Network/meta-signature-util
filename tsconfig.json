@@ -10,6 +10,10 @@
     "outDir": "./lib",
     "baseUrl": "./",
     "incremental": true,
+    "paths": {
+      "@/*": ["./*"],
+      "src/*": ["./src/*"],
+    },
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,

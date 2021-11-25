@@ -10,16 +10,12 @@ export type MetadataInPayload = {
   claim: string;
 };
 
-export type MetadataInPayloadWithDigest = {
+export type MetadataInPayloadWithDigest = MetadataInPayload & {
   digest: string;
-  nonce: string;
-  claim: string;
 };
 
-export type MetadataInPayloadWithSignature = {
+export type MetadataInPayloadWithSignature = MetadataInPayload & {
   signature: string;
-  nonce: string;
-  claim: string;
 };
 
 export type PostMetadata = {
@@ -34,9 +30,9 @@ export type PostMetadata = {
 
 export type AuthorDigestRequestMetadata = {
   '@context': 'https://metanetwork.online/ns/cms';
-  type: 'author-digest';
+  '@type': 'author-digest';
+  '@version': string;
   algorithm: 'sha256' | 'sha512';
-  version: string;
   title: string;
   categories: string;
   content: string;
@@ -52,9 +48,9 @@ export type AuthorDigestRequestMetadata = {
 
 export type SignatureMetadata = {
   '@context': 'https://metanetwork.online/ns/cms';
-  type: string;
+  '@type': string;
+  '@version': string;
   signatureAlgorithm: 'curve25519';
-  version: string;
   publicKey: string;
   signature: string;
   nonce: string;
@@ -62,6 +58,7 @@ export type SignatureMetadata = {
   ts: number;
   reference: {
     refer: string;
+    rel: string;
     body: SignatureMetadata | AuthorDigestRequestMetadata;
   }[];
 };
