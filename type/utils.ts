@@ -28,7 +28,7 @@ export type PostMetadata = {
   tags: string;
 };
 
-export type AuthorDigestRequestMetadata = {
+export type AuthorDigestMetadata = {
   '@context': 'https://metanetwork.online/ns/cms';
   '@type': 'author-digest';
   '@version': string;
@@ -59,7 +59,7 @@ export type SignatureMetadata = {
   reference: {
     refer: string;
     rel: string;
-    body: SignatureMetadata | AuthorDigestRequestMetadata;
+    body: SignatureMetadata | AuthorDigestMetadata;
   }[];
 };
 

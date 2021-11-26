@@ -1,14 +1,22 @@
-import { AuthorDigestRequestMetadata, SignatureMetadata } from 'src/type/types';
+import { AuthorDigestMetadata, SignatureMetadata } from '@/type';
 
+/**
+ * Bind the author's digest metadata (with post metadata and content)
+ * to the server's verification's reference.
+ * @param authorDigestMetadata metadata and generated digest of the author's post
+ * @param authorDigestMetadataRefer URI reference to the author's post digest metadata
+ * @param serverVerificationSignatureMetadata server's signed verification metadata
+ * @returns {SignatureMetadata} server's signed verification metadata with the reference
+ */
 const generateAuthorDigestSignWithContentServerVerificationMetadata = (
-  authorDigestRequestMetadata: AuthorDigestRequestMetadata,
-  authorDigestRequestMetadataRefer: string,
+  authorDigestMetadata: AuthorDigestMetadata,
+  authorDigestMetadataRefer: string,
   serverVerificationSignatureMetadata: SignatureMetadata,
 ): SignatureMetadata => {
   serverVerificationSignatureMetadata.reference.unshift({
-    refer: authorDigestRequestMetadataRefer,
+    refer: authorDigestMetadataRefer,
     rel: 'content',
-    body: authorDigestRequestMetadata,
+    body: authorDigestMetadata,
   });
   return serverVerificationSignatureMetadata;
 };

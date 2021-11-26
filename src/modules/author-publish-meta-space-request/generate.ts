@@ -1,10 +1,17 @@
-import { KeyPair, MetadataInPayload, SignatureMetadata } from 'src/type/types';
 import {
   createKeyValueByMetadataPayload,
   createNonce,
   createSignature,
 } from 'src/utils';
+import { KeyPair, MetadataInPayload, SignatureMetadata } from '@/type';
 
+/**
+ * Generate signature metadata of the author request
+ * to publish their Meta Space to a server.
+ * @param {KeyPair} authorKeys The author's keys to use for signing.
+ * @param {string} serverDomain The author claims to publish their Meta Space to this domain
+ * @returns {SignatureMetadata}
+ */
 const generateAuthorPublishMetaSpaceRequestMetadata = (
   authorKeys: KeyPair,
   serverDomain: string,

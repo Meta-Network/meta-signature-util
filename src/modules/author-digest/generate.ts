@@ -1,27 +1,31 @@
-import { AuthorDigestRequestMetadata, PostMetadata } from 'src/type/types';
 import { createDigest, createKeyValueByMetadataPayload } from 'src/utils';
+import { AuthorDigestMetadata, PostMetadata } from '@/type';
 
-const generatePostDigestRequestMetadata = (
+/**
+ * Generate digest metadata for author's post.
+ * @param {PostMetadata} postMetadata an object containing metadata and content of the post
+ * @returns {AuthorDigestMetadata} metadata and generated digest of the post
+ */
+const generatePostDigestMetadata = (
   postMetadata: PostMetadata,
-): AuthorDigestRequestMetadata => {
-  const authorDigestRequestMetadataHeader: Partial<AuthorDigestRequestMetadata> =
-    {
-      '@context': 'https://metanetwork.online/ns/cms',
-      '@type': 'author-digest',
-      '@version': '2021-11-01-01',
-      algorithm: 'sha256',
-      ...postMetadata,
-    };
+): AuthorDigestMetadata => {
+  const authorDigestMetadataHeader: Partial<AuthorDigestMetadata> = {
+    '@context': 'https://metanetwork.online/ns/cms',
+    '@type': 'author-digest',
+    '@version': '2021-11-01-01',
+    algorithm: 'sha256',
+    ...postMetadata,
+  };
 
   const { payload, timestamp } = createKeyValueByMetadataPayload(postMetadata);
   const digest = createDigest(payload);
 
-  const authorDigestRequestMetadata = {
-    ...authorDigestRequestMetadataHeader,
+  const authorDigestMetadata = {
+    ...authorDigestMetadataHeader,
     digest,
     ts: timestamp,
   };
-  return authorDigestRequestMetadata as AuthorDigestRequestMetadata;
+  return authorDigestMetadata as AuthorDigestMetadata;
 };
 
-export default generatePostDigestRequestMetadata;
+export default generatePostDigestMetadata;

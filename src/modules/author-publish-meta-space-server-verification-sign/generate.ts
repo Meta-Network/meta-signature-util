@@ -1,14 +1,23 @@
 import {
-  KeyPair,
-  MetadataInPayloadWithSignature,
-  SignatureMetadata,
-} from 'src/type/types';
-import {
   createKeyValueByMetadataPayload,
   createNonce,
   createSignature,
 } from 'src/utils';
+import {
+  KeyPair,
+  MetadataInPayloadWithSignature,
+  SignatureMetadata,
+} from '@/type';
 
+/**
+ * Generate the server's verification signature metadata for
+ * the author's request to publish their Meta Space to this server.
+ * @param {KeyPair} serverKeys The server keys to use for signing.
+ * @param serverDomain The server domain to use in the claim.
+ * @param {SignatureMetadata} authorPublishMetaSpaceRequestMetadata The author's publish request metadata object.
+ * @param {string} authorPublishMetaSpaceRequestMetadataRefer URI reference to the author's publish request metadata.
+ * @returns {SignatureMetadata} The server's signed verification metadata.
+ */
 const generatePublishMetaSpaceServerVerificationMetadata = (
   serverKeys: KeyPair,
   serverDomain: string,
@@ -22,7 +31,7 @@ const generatePublishMetaSpaceServerVerificationMetadata = (
     {
       '@context': 'https://metanetwork.online/ns/cms',
       '@type': 'author-publish-meta-space-server-verification-sign',
-      '@version': '1.0.0',
+      '@version': '1.0.1',
       signatureAlgorithm: 'curve25519',
       publicKey,
     };
@@ -31,7 +40,7 @@ const generatePublishMetaSpaceServerVerificationMetadata = (
     {
       signature: authorSignature,
       nonce: createNonce(),
-      claim: `I, ${serverDomain} authorize request (sign: ${authorSignature}) using key: ${publicKey}`,
+      claim: `I, ${serverDomain}, verified the request signed with ${authorSignature} using the author's key: ${authorPublishMetaSpaceRequestMetadata.publicKey}, and signed it with my key: ${publicKey}`,
     };
 
   const { payload, timestamp } = createKeyValueByMetadataPayload(

@@ -2,16 +2,16 @@ import crypto from 'crypto';
 import { authorDigest, authorDigestSign } from '../lib';
 import * as utils from '../lib/utils';
 import {
-  AuthorDigestRequestMetadata,
   KeyPair,
+  AuthorDigestMetadata,
   AuthorSignatureMetadata,
-} from '../src/type/types';
+} from '../type';
 
-let digestMetadata: AuthorDigestRequestMetadata;
+let digestMetadata: AuthorDigestMetadata;
 let authorSignatureMetadata: AuthorSignatureMetadata;
 
 Date.now = jest.fn(() => 1636198657477);
-// @ts-ignore
+
 crypto.randomBytes = jest.fn(() =>
   // @ts-ignore
   Buffer.from([
