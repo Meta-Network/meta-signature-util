@@ -108,3 +108,6 @@ lib/
 
 # editor files
 .idea
+
+# TypeDoc output
+/docs
