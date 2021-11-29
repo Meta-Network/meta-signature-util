@@ -7,6 +7,8 @@ import serverVerificationSignWithContent from './modules/server-verification-sig
 import authorPublishMetaSpaceRequest from './modules/author-publish-meta-space-request';
 import authorPublishMetaSpaceServerVerificationSign from './modules/author-publish-meta-space-server-verification-sign';
 
+export * from './type';
+
 export {
   generateKeys,
   generateSeed,

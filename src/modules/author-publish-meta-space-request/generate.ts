@@ -3,7 +3,7 @@ import {
   createNonce,
   createSignature,
 } from 'src/utils';
-import { KeyPair, MetadataInPayload, SignatureMetadata } from '@/type';
+import { KeyPair, MetadataInPayload, SignatureMetadata } from '@/src/type';
 
 /**
  * Generate signature metadata of the author request

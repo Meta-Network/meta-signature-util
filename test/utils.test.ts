@@ -5,7 +5,7 @@ import {
   KeyPair,
   AuthorDigestMetadata,
   AuthorSignatureMetadata,
-} from '../type';
+} from '../src/type';
 
 let digestMetadata: AuthorDigestMetadata;
 let authorSignatureMetadata: AuthorSignatureMetadata;

@@ -1,5 +1,5 @@
 import { createDigest, createKeyValueByMetadataPayload } from 'src/utils';
-import { AuthorDigestMetadata, PostMetadata } from '@/type';
+import { AuthorDigestMetadata, PostMetadata } from '@/src/type';
 
 /**
  * Generate digest metadata for author's post.

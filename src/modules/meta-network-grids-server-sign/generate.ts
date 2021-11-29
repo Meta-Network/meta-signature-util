@@ -4,12 +4,12 @@ import {
   createNonce,
   createSignature,
 } from 'src/utils';
-import type { KeyPair, MetadataInPayloadWithDigest } from '@/type';
+import type { KeyPair, MetadataInPayloadWithDigest } from '@/src/type';
 import {
   CreateGridRequestMetadata,
   UpdateGridRequestMetadata,
   BatchGridActionsMetadata,
-} from '@/type';
+} from '@/src/type';
 
 /**
  * Generate a batch grid actions metadata.

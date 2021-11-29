@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import niceware from 'niceware';
 import * as curve from 'curve25519-js';
 
-import { KeyValuePair, MetadataInPayload } from '../type';
+import { KeyValuePair, MetadataInPayload } from './type';
 
 /**
  * Convert Uint8 TypedArray to hex string, also append '0x' to the start.

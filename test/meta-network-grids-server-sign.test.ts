@@ -5,7 +5,7 @@ import {
   BatchGridActionsMetadata,
   CreateGridRequestMetadata,
   UpdateGridRequestMetadata,
-} from '../type';
+} from '../src/type';
 
 Date.now = jest.fn(() => 163619800000);
 

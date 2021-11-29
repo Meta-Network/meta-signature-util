@@ -7,7 +7,7 @@ import {
   KeyPair,
   MetadataInPayloadWithSignature,
   SignatureMetadata,
-} from '@/type';
+} from '@/src/type';
 
 /**
  * Generate the server's verification signature metadata for
