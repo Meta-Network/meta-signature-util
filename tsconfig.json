@@ -10,7 +10,6 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "baseUrl": "./",
-    "incremental": true,
     "paths": {
       "@/*": ["./*"],
       "src/*": ["./src/*"]
