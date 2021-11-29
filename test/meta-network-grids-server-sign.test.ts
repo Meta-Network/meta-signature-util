@@ -3,9 +3,8 @@ import * as utils from '../lib';
 import {
   KeyPair,
   BatchGridActionsMetadata,
-  CreateGridRequestMetadata,
-  UpdateGridRequestMetadata,
-} from '../src/type';
+  GridMaintenanceRequestMetadata,
+} from '../src';
 
 Date.now = jest.fn(() => 163619800000);
 
@@ -48,9 +47,8 @@ const fixedSeed: string[] = [
 
 const keys: KeyPair = utils.generateKeys(fixedSeed);
 
-const items: Array<CreateGridRequestMetadata | UpdateGridRequestMetadata> = [
+const items: Array<GridMaintenanceRequestMetadata> = [
   {
-    type: 'create',
     id: 1,
     siteName: '',
     x: 0,
@@ -68,7 +66,6 @@ const items: Array<CreateGridRequestMetadata | UpdateGridRequestMetadata> = [
     inviterUserId: 0,
   },
   {
-    type: 'create',
     id: 5,
     siteName: '',
     x: 0,

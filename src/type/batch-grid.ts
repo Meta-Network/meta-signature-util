@@ -18,13 +18,8 @@ type HexGrid = {
 
 type GridProperties = Omit<HexGrid, 'createdAt' | 'updatedAt'>;
 
-export type CreateGridRequestMetadata = GridProperties & {
-  type: 'create';
-};
-
-export type UpdateGridRequestMetadata = Partial<GridProperties> & {
-  type: 'update';
-  previousTx: string;
+export type GridMaintenanceRequestMetadata = Partial<GridProperties> & {
+  previousTx?: string;
 };
 
 export interface BatchGridActionsMetadata {
@@ -32,7 +27,7 @@ export interface BatchGridActionsMetadata {
   '@type': 'meta-network-grids-server-sign';
   '@version': string;
   signatureAlgorithm: 'curve25519';
-  items: Array<CreateGridRequestMetadata | UpdateGridRequestMetadata>;
+  items: Array<GridMaintenanceRequestMetadata>;
   digest: string;
   publicKey: string;
   signature: string;

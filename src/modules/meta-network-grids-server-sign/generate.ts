@@ -4,12 +4,12 @@ import {
   createNonce,
   createSignature,
 } from 'src/utils';
-import type { KeyPair, MetadataInPayloadWithDigest } from '@/src/type';
-import {
-  CreateGridRequestMetadata,
-  UpdateGridRequestMetadata,
-  BatchGridActionsMetadata,
+import type {
+  GridMaintenanceRequestMetadata,
+  KeyPair,
+  MetadataInPayloadWithDigest,
 } from '@/src/type';
+import { BatchGridActionsMetadata } from '@/src/type';
 
 /**
  * Generate a batch grid actions metadata.
@@ -19,7 +19,7 @@ import {
  * @returns {BatchGridActionsMetadata} Generated metadata.
  */
 const generateBatchGridActionsMetadata = (
-  items: Array<CreateGridRequestMetadata | UpdateGridRequestMetadata>,
+  items: Array<GridMaintenanceRequestMetadata>,
   serverKeys: KeyPair,
   serverDomain: string,
 ): BatchGridActionsMetadata => {

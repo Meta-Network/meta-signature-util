@@ -1,11 +1,7 @@
 import crypto from 'crypto';
 import { authorDigest, authorDigestSign } from '../lib';
 import * as utils from '../lib/utils';
-import {
-  KeyPair,
-  AuthorDigestMetadata,
-  AuthorSignatureMetadata,
-} from '../src/type';
+import { KeyPair, AuthorDigestMetadata, AuthorSignatureMetadata } from '../src';
 
 let digestMetadata: AuthorDigestMetadata;
 let authorSignatureMetadata: AuthorSignatureMetadata;
