@@ -12,7 +12,7 @@ const generatePostDigestMetadata = (
   const authorDigestMetadataHeader: Partial<AuthorDigestMetadata> = {
     '@context': 'https://metanetwork.online/ns/cms',
     '@type': 'author-digest',
-    '@version': '2021-11-01-01',
+    '@version': '1.0.0',
     algorithm: 'sha256',
     ...postMetadata,
   };

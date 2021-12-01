@@ -6,7 +6,7 @@ import {
 import {
   KeyPair,
   SignatureMetadata,
-  AuthorSignatureMetadata,
+  AuthorPostSignatureMetadata,
   MetadataInPayloadWithSignature,
 } from '@/src/type';
 
@@ -15,14 +15,14 @@ import {
  * the author's signature metadata of their post digest.
  * @param {KeyPair} serverKeys the server's private and public key pair
  * @param serverDomain The server domain to use in the claim.
- * @param {AuthorSignatureMetadata} authorDigestSignatureMetadata the author's signature metadata of their post digest
+ * @param {AuthorPostSignatureMetadata} authorDigestSignatureMetadata the author's signature metadata of their post digest
  * @param {string} authorDigestSignatureMetadataRefer URI reference to the author's signature metadata of their post digest
  * @returns {SignatureMetadata} server's signed verification metadata
  */
 const generateAuthorDigestSignServerVerificationMetadata = (
   serverKeys: KeyPair,
   serverDomain: string,
-  authorDigestSignatureMetadata: AuthorSignatureMetadata,
+  authorDigestSignatureMetadata: AuthorPostSignatureMetadata,
   authorDigestSignatureMetadataRefer: string,
 ): SignatureMetadata => {
   const publicKey = serverKeys.public;

@@ -1,10 +1,14 @@
 import crypto from 'crypto';
 import { authorDigest, authorDigestSign } from '../lib';
 import * as utils from '../lib/utils';
-import { KeyPair, AuthorDigestMetadata, AuthorSignatureMetadata } from '../src';
+import {
+  KeyPair,
+  AuthorDigestMetadata,
+  AuthorPostSignatureMetadata,
+} from '../src';
 
 let digestMetadata: AuthorDigestMetadata;
-let authorSignatureMetadata: AuthorSignatureMetadata;
+let authorSignatureMetadata: AuthorPostSignatureMetadata;
 
 Date.now = jest.fn(() => 1636198657477);
 

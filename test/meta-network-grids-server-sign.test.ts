@@ -102,7 +102,7 @@ const exceptedMetadata: BatchGridActionsMetadata = {
 };
 
 describe('test metaNetworkGridsServerSign.generate', () => {
-  test('the generated metadata should match the excepted', () => {
+  test('the generated metadata should matches the excepted', () => {
     const metadata = utils.metaNetworkGridsServerSign.generate(
       items,
       keys,
@@ -118,7 +118,7 @@ describe('test metaNetworkGridsServerSign.verify', () => {
       utils.metaNetworkGridsServerSign.verify(exceptedMetadata),
     ).toBeTruthy();
   });
-  test('the generated metadata should not be verified', () => {
+  test('the generated metadata should not be verified after being modified', () => {
     expect(
       utils.metaNetworkGridsServerSign.verify({
         ...exceptedMetadata,
