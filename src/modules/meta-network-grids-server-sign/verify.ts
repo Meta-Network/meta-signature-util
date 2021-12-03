@@ -3,7 +3,7 @@ import {
   createKeyValueByMetadataPayload,
   verifySignature,
 } from 'src/utils';
-import { BatchGridActionsMetadata } from '@/src/type';
+import { BatchGridActionsMetadata } from 'src/type';
 
 /**
  * Verify the digest and the signature of the batch grid actions metadata.

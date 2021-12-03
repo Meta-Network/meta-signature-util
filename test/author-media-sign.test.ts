@@ -84,11 +84,8 @@ describe('test metaNetworkGridsServerSign.generate', () => {
   test('the generate function should throw an error if the contentType is not valid', () => {
     const copy = mediaMetadata;
     copy.contentType = 'something else';
-    const generate = () => utils.authorMediaSign.generate(
-      keys,
-      'metanetwork.online',
-      copy,
-    );
+    const generate = () =>
+      utils.authorMediaSign.generate(keys, 'metanetwork.online', copy);
     expect(generate).toThrow(TypeError);
   });
 });

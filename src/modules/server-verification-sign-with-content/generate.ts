@@ -1,4 +1,4 @@
-import { AuthorDigestMetadata, BaseSignatureMetadata } from '@/src/type';
+import { AuthorDigestMetadata, BaseSignatureMetadata } from 'src/type';
 
 /**
  * Bind the author's digest metadata (with post metadata and content)

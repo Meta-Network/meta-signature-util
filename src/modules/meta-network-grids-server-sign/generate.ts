@@ -8,8 +8,8 @@ import type {
   GridMaintenanceRequestMetadata,
   KeyPair,
   MetadataInPayloadWithDigest,
-} from '@/src/type';
-import { BatchGridActionsMetadata } from '@/src/type';
+} from 'src/type';
+import { BatchGridActionsMetadata } from 'src/type';
 
 /**
  * Generate a batch grid actions metadata.

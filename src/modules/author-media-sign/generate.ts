@@ -8,7 +8,7 @@ import {
   MediaMetadata,
   AuthorMediaSignatureMetadata,
   MediaMetadataInPayload,
-} from '@/src/type';
+} from 'src/type';
 
 /**
  * Generate digest metadata for author's media (video, image and other type of medias).

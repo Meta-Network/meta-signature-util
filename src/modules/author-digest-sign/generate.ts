@@ -7,7 +7,7 @@ import {
   KeyPair,
   AuthorPostSignatureMetadata,
   MetadataInPayloadWithDigest,
-} from '@/src/type';
+} from 'src/type';
 
 /**
  * Generate signature metadata for the author's post digest.
