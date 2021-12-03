@@ -19,9 +19,9 @@ import { BatchGridActionsMetadata } from '@/src/type';
  * @returns {BatchGridActionsMetadata} Generated metadata.
  */
 const generateBatchGridActionsMetadata = (
-  items: Array<GridMaintenanceRequestMetadata>,
   serverKeys: KeyPair,
   serverDomain: string,
+  items: Array<GridMaintenanceRequestMetadata>,
 ): BatchGridActionsMetadata => {
   const publicKey = serverKeys.public;
   // sort the items by id

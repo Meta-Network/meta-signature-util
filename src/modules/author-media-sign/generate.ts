@@ -6,8 +6,8 @@ import {
 import {
   KeyPair,
   MediaMetadata,
-  MetadataInPayload,
   AuthorMediaSignatureMetadata,
+  MediaMetadataInPayload,
 } from '@/src/type';
 
 /**
@@ -22,6 +22,10 @@ const generateMediaSignatureMetadata = (
   serverDomain: string,
   mediaMetadata: MediaMetadata,
 ): AuthorMediaSignatureMetadata => {
+  if (!mediaMetadata.contentType.match(/\w+\/[-+.\w]+/)) {
+    throw new TypeError('Invalid contentType, should be a valid MIME type');
+  }
+
   const publicKey = authorKeys.public;
   const authorMediaSignatureMetadataHeader: Partial<AuthorMediaSignatureMetadata> =
     {
@@ -33,8 +37,10 @@ const generateMediaSignatureMetadata = (
       ...mediaMetadata,
     };
 
-  const authorMediaSignaturePayload: MetadataInPayload & { hash: string } = {
-    hash: mediaMetadata.hash,
+  const authorMediaSignaturePayload: MediaMetadataInPayload = {
+    platform: mediaMetadata.platform,
+    contentType: mediaMetadata.contentType,
+    platformHash: mediaMetadata.platformHash,
     nonce: createNonce(),
     claim: `I authorize publishing by ${serverDomain} from this device using key: ${publicKey}`,
   };
@@ -52,7 +58,5 @@ const generateMediaSignatureMetadata = (
   };
   return authorMediaSignatureMetadata as AuthorMediaSignatureMetadata;
 };
-
-const a = 20;
 
 export default generateMediaSignatureMetadata;

@@ -104,9 +104,9 @@ const exceptedMetadata: BatchGridActionsMetadata = {
 describe('test metaNetworkGridsServerSign.generate', () => {
   test('the generated metadata should matches the excepted', () => {
     const metadata = utils.metaNetworkGridsServerSign.generate(
-      items,
       keys,
       'metanetwork.online',
+      items,
     );
     expect(metadata).toEqual(exceptedMetadata);
   });

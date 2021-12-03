@@ -50,7 +50,9 @@ const mediaMetadata: MediaMetadata = {
     'https://storageapi.fleek.co/andoroyur-team-bucket/metanetwork/users/metaio-storage/68253563.jpeg',
   license: 'CC BY 4.0',
   tags: 'remi,avatar',
-  hash: 'bafybeie7wzzgenk6vvjiwdvooirum4g2lrwmsvjbez3a65zy4jub4vskve',
+  platform: 'ipfs',
+  contentType: 'image/jpeg',
+  platformHash: 'bafybeie7wzzgenk6vvjiwdvooirum4g2lrwmsvjbez3a65zy4jub4vskve',
 };
 
 const exceptedMetadata: AuthorMediaSignatureMetadata = {
@@ -63,7 +65,7 @@ const exceptedMetadata: AuthorMediaSignatureMetadata = {
     '0x615a22628d2e236a0a41b50cb2d0eb5bf3312ca70025c9d901d6ad5d149aa006',
   nonce: '0x1b2100414a0000003e493900',
   signature:
-    '0x9615627e0456580de66c2898f6f587e6a884ec0a0a6c7f16756f596e694fb671ef95aa8c7ba7e9f8bf9fcd791a4bffb4e8456d61db7b172a78ec8c764ffc450a',
+    '0xa199c88212bd3e856336f6806d8e2632db2f8263285898ecfd487ac9ac98ae4b56fe36071f51c733189096f9b44f6be025e7338e5075a8b7b9b205dd2c317f04',
   claim:
     'I authorize publishing by metanetwork.online from this device using key: 0x615a22628d2e236a0a41b50cb2d0eb5bf3312ca70025c9d901d6ad5d149aa006',
   ts: 163619800000,
@@ -77,6 +79,17 @@ describe('test metaNetworkGridsServerSign.generate', () => {
       mediaMetadata,
     );
     expect(metadata).toEqual(exceptedMetadata);
+  });
+
+  test('the generate function should throw an error if the contentType is not valid', () => {
+    const copy = mediaMetadata;
+    copy.contentType = 'something else';
+    const generate = () => utils.authorMediaSign.generate(
+      keys,
+      'metanetwork.online',
+      copy,
+    );
+    expect(generate).toThrow(TypeError);
   });
 });
 

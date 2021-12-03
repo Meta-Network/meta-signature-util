@@ -6,7 +6,7 @@ import {
 import {
   KeyPair,
   MetadataInPayloadWithSignature,
-  SignatureMetadata,
+  BaseSignatureMetadata,
 } from '@/src/type';
 
 /**
@@ -14,20 +14,20 @@ import {
  * the author's request to publish their Meta Space to this server.
  * @param {KeyPair} serverKeys The server keys to use for signing.
  * @param serverDomain The server domain to use in the claim.
- * @param {SignatureMetadata} authorPublishMetaSpaceRequestMetadata The author's publish request metadata object.
+ * @param {BaseSignatureMetadata} authorPublishMetaSpaceRequestMetadata The author's publish request metadata object.
  * @param {string} authorPublishMetaSpaceRequestMetadataRefer URI reference to the author's publish request metadata.
- * @returns {SignatureMetadata} The server's signed verification metadata.
+ * @returns {BaseSignatureMetadata} The server's signed verification metadata.
  */
 const generatePublishMetaSpaceServerVerificationMetadata = (
   serverKeys: KeyPair,
   serverDomain: string,
-  authorPublishMetaSpaceRequestMetadata: SignatureMetadata,
+  authorPublishMetaSpaceRequestMetadata: BaseSignatureMetadata,
   authorPublishMetaSpaceRequestMetadataRefer: string,
-): SignatureMetadata => {
+): BaseSignatureMetadata => {
   const publicKey = serverKeys.public;
   const authorSignature = authorPublishMetaSpaceRequestMetadata.signature;
 
-  const serverVerificationSignatureMetadataHeader: Partial<SignatureMetadata> =
+  const serverVerificationSignatureMetadataHeader: Partial<BaseSignatureMetadata> =
     {
       '@context': 'https://metanetwork.online/ns/cms',
       '@type': 'author-publish-meta-space-server-verification-sign',
@@ -62,7 +62,7 @@ const generatePublishMetaSpaceServerVerificationMetadata = (
       },
     ],
   };
-  return serverVerificationSignatureMetadata as SignatureMetadata;
+  return serverVerificationSignatureMetadata as BaseSignatureMetadata;
 };
 
 export default generatePublishMetaSpaceServerVerificationMetadata;

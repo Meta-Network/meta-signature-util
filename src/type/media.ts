@@ -1,10 +1,20 @@
 export type MediaMetadata = {
   title: string;
   categories: string;
-  hash: string;
+  platform: string;
+  platformHash: string;
+  contentType: string;
   cover: string;
   license: string;
   tags: string;
+};
+
+export type MediaMetadataInPayload = {
+  platform: string;
+  platformHash: string;
+  contentType: string;
+  nonce: string;
+  claim: string;
 };
 
 export type AuthorMediaSignatureMetadata = {
@@ -16,7 +26,9 @@ export type AuthorMediaSignatureMetadata = {
   title: string;
   categories: string;
   cover: string;
-  hash: string;
+  platform: string;
+  platformHash: string;
+  contentType: string;
   license: string;
   signature: string;
   tags: string;

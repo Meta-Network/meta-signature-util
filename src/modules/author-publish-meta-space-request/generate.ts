@@ -3,22 +3,22 @@ import {
   createNonce,
   createSignature,
 } from 'src/utils';
-import { KeyPair, MetadataInPayload, SignatureMetadata } from '@/src/type';
+import { KeyPair, MetadataInPayload, BaseSignatureMetadata } from '@/src/type';
 
 /**
  * Generate signature metadata of the author request
  * to publish their Meta Space to a server.
  * @param {KeyPair} authorKeys The author's keys to use for signing.
  * @param {string} serverDomain The author claims to publish their Meta Space to this domain
- * @returns {SignatureMetadata}
+ * @returns {BaseSignatureMetadata}
  */
 const generateAuthorPublishMetaSpaceRequestMetadata = (
   authorKeys: KeyPair,
   serverDomain: string,
-): SignatureMetadata => {
+): BaseSignatureMetadata => {
   const publicKey = authorKeys.public;
 
-  const authorPublishRequestMetadataHeader: Partial<SignatureMetadata> = {
+  const authorPublishRequestMetadataHeader: Partial<BaseSignatureMetadata> = {
     '@context': 'https://metanetwork.online/ns/cms',
     '@type': 'author-publish-meta-space-request',
     '@version': '1.0.0',
@@ -42,7 +42,7 @@ const generateAuthorPublishMetaSpaceRequestMetadata = (
     signature,
     ts: timestamp,
   };
-  return authorPublishRequestMetadata as SignatureMetadata;
+  return authorPublishRequestMetadata as BaseSignatureMetadata;
 };
 
 export default generateAuthorPublishMetaSpaceRequestMetadata;

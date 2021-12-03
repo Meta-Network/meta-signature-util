@@ -1,4 +1,4 @@
-import { SignatureMetadata } from '@/src';
+import { BaseSignatureMetadata } from './utils';
 
 export type PostMetadata = {
   title: string;
@@ -28,6 +28,6 @@ export type AuthorDigestMetadata = {
   ts: number;
 };
 
-export type AuthorPostSignatureMetadata = SignatureMetadata & {
+export type AuthorPostSignatureMetadata = BaseSignatureMetadata & {
   digest: string;
 };

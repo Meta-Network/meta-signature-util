@@ -5,7 +5,7 @@ import {
 } from 'src/utils';
 import {
   KeyPair,
-  SignatureMetadata,
+  BaseSignatureMetadata,
   AuthorPostSignatureMetadata,
   MetadataInPayloadWithSignature,
 } from '@/src/type';
@@ -17,18 +17,18 @@ import {
  * @param serverDomain The server domain to use in the claim.
  * @param {AuthorPostSignatureMetadata} authorDigestSignatureMetadata the author's signature metadata of their post digest
  * @param {string} authorDigestSignatureMetadataRefer URI reference to the author's signature metadata of their post digest
- * @returns {SignatureMetadata} server's signed verification metadata
+ * @returns {BaseSignatureMetadata} server's signed verification metadata
  */
 const generateAuthorDigestSignServerVerificationMetadata = (
   serverKeys: KeyPair,
   serverDomain: string,
   authorDigestSignatureMetadata: AuthorPostSignatureMetadata,
   authorDigestSignatureMetadataRefer: string,
-): SignatureMetadata => {
+): BaseSignatureMetadata => {
   const publicKey = serverKeys.public;
   const authorSignature = authorDigestSignatureMetadata.signature;
 
-  const serverVerificationSignatureMetadataHeader: Partial<SignatureMetadata> =
+  const serverVerificationSignatureMetadataHeader: Partial<BaseSignatureMetadata> =
     {
       '@context': 'https://metanetwork.online/ns/cms',
       '@type': 'server-verification-sign',
@@ -63,7 +63,7 @@ const generateAuthorDigestSignServerVerificationMetadata = (
       },
     ],
   };
-  return serverVerificationSignatureMetadata as SignatureMetadata;
+  return serverVerificationSignatureMetadata as BaseSignatureMetadata;
 };
 
 export default generateAuthorDigestSignServerVerificationMetadata;
