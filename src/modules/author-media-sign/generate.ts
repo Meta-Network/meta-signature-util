@@ -31,7 +31,7 @@ const generateMediaSignatureMetadata = (
     {
       '@context': 'https://metanetwork.online/ns/cms',
       '@type': 'author-media-sign',
-      '@version': '1.0.0',
+      '@version': '2.0.0',
       signatureAlgorithm: 'curve25519',
       publicKey,
       ...mediaMetadata,
@@ -42,7 +42,7 @@ const generateMediaSignatureMetadata = (
     contentType: mediaMetadata.contentType,
     platformHash: mediaMetadata.platformHash,
     nonce: createNonce(),
-    claim: `I authorize publishing by ${serverDomain} from this device using key: ${publicKey}`,
+    claim: `I signed with my key ${publicKey} from this device: I authorize ${serverDomain} to publish this post and upload its metadata for notarization.`,
   };
 
   const { payload, timestamp } = createKeyValueByMetadataPayload(

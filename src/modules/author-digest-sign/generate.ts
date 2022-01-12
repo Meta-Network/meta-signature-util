@@ -27,7 +27,7 @@ const generateAuthorDigestSignMetadata = (
     {
       '@context': 'https://metanetwork.online/ns/cms',
       '@type': 'author-digest-sign',
-      '@version': '1.0.0',
+      '@version': '2.0.0',
       signatureAlgorithm: 'curve25519',
       publicKey,
     };
@@ -35,7 +35,7 @@ const generateAuthorDigestSignMetadata = (
   const authorDigestSignaturePayload: Partial<MetadataInPayloadWithDigest> = {
     digest,
     nonce: createNonce(),
-    claim: `I authorize publishing by ${serverDomain} from this device using key: ${publicKey}`,
+    claim: `I signed with my key ${publicKey} from this device: I authorize ${serverDomain} to publish this post and upload its metadata for notarization.`,
   };
 
   const { payload, timestamp } = createKeyValueByMetadataPayload(

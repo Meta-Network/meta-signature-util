@@ -21,14 +21,14 @@ const generateAuthorPublishMetaSpaceRequestMetadata = (
   const authorPublishRequestMetadataHeader: Partial<BaseSignatureMetadata> = {
     '@context': 'https://metanetwork.online/ns/cms',
     '@type': 'author-publish-meta-space-request',
-    '@version': '1.0.0',
+    '@version': '2.0.0',
     signatureAlgorithm: 'curve25519',
     publicKey,
   };
 
   const authorPublishRequestPayload: Partial<MetadataInPayload> = {
     nonce: createNonce(),
-    claim: `I authorize publishing Meta Space by ${serverDomain} from this device using key: ${publicKey}`,
+    claim: `I signed with my key ${publicKey} from this device: I authorize ${serverDomain} to publish this post and upload its metadata for notarization.`,
   };
 
   const { payload, timestamp } = createKeyValueByMetadataPayload(

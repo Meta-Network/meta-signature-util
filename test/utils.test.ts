@@ -101,7 +101,7 @@ describe('test generateSignature', () => {
     digestMetadata.digest,
   );
   const exceptedSignature =
-    '0x9ab3c80768805e7842a4c1733d47e007a35bdbcdb9a5899ed5c9df6fa353cc9ddf65e9675700e921c2aa70f895c77f3b13aa119811fccbe0cbf684c40b37d880';
+    '0x67af805b96ca400e3fb97483fc8d0b67268a33a95cdb896af37dda129e5df85868bbc6bddef7e32584537b8e022fb589ba04bb84ebbb15ad27d4598f6febea84';
 
   test('the signature in result should be the same as the excepted', () => {
     expect(authorSignatureMetadata.signature).toBe(exceptedSignature);

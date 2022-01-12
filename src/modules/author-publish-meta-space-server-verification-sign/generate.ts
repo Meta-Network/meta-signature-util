@@ -31,7 +31,7 @@ const generatePublishMetaSpaceServerVerificationMetadata = (
     {
       '@context': 'https://metanetwork.online/ns/cms',
       '@type': 'author-publish-meta-space-server-verification-sign',
-      '@version': '1.0.1',
+      '@version': '2.0.0',
       signatureAlgorithm: 'curve25519',
       publicKey,
     };
@@ -40,7 +40,7 @@ const generatePublishMetaSpaceServerVerificationMetadata = (
     {
       signature: authorSignature,
       nonce: createNonce(),
-      claim: `I, ${serverDomain}, verified the request signed with ${authorSignature} using the author's key: ${authorPublishMetaSpaceRequestMetadata.publicKey}, and signed it with my key: ${publicKey}`,
+      claim: `I, ${serverDomain}, signed with my key ${publicKey}: I verified the request signed with ${authorSignature} using the author's key ${authorPublishMetaSpaceRequestMetadata.publicKey}, will publish the post and upload its metadata for notarization.`,
     };
 
   const { payload, timestamp } = createKeyValueByMetadataPayload(

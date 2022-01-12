@@ -58,16 +58,16 @@ const mediaMetadata: MediaMetadata = {
 const exceptedMetadata: AuthorMediaSignatureMetadata = {
   '@context': 'https://metanetwork.online/ns/cms',
   '@type': 'author-media-sign',
-  '@version': '1.0.0',
+  '@version': '2.0.0',
   signatureAlgorithm: 'curve25519',
   ...mediaMetadata,
   publicKey:
     '0x615a22628d2e236a0a41b50cb2d0eb5bf3312ca70025c9d901d6ad5d149aa006',
   nonce: '0x1b2100414a0000003e493900',
   signature:
-    '0xa199c88212bd3e856336f6806d8e2632db2f8263285898ecfd487ac9ac98ae4b56fe36071f51c733189096f9b44f6be025e7338e5075a8b7b9b205dd2c317f04',
+    '0xcf442c2de06e15d9c661cd6fff7f037ddac0bbabf7dd3a8ca98fafda1bc8943ac77b633cc05fa2b6d1e775c47d0cbcb9e976fee1fb600a4bd3028fb5c711a60a',
   claim:
-    'I authorize publishing by metanetwork.online from this device using key: 0x615a22628d2e236a0a41b50cb2d0eb5bf3312ca70025c9d901d6ad5d149aa006',
+    'I signed with my key 0x615a22628d2e236a0a41b50cb2d0eb5bf3312ca70025c9d901d6ad5d149aa006 from this device: I authorize metanetwork.online to publish this post and upload its metadata for notarization.',
   ts: 163619800000,
 };
 
