@@ -53,7 +53,7 @@ const fixedSeed: string[] = [
 const keys: KeyPair = utils.generateKeys(fixedSeed);
 
 describe('test generateSeed', () => {
-  test('a seed should be 16 length Array of string', () => {
+  test('a seed should be a 16 length Array of string', () => {
     expect(seed).toBeInstanceOf(Array);
     expect(seed.length).toBe(16);
   });
@@ -63,11 +63,11 @@ describe('test generateSeed', () => {
 });
 
 describe('test generateKeys', () => {
-  test('keys should be defined as 64 length hex string', () => {
+  test('keys should be defined as a 64 length hex string', () => {
     expect(keys.public).toMatch(/0x\w{64}/);
     expect(keys.private).toMatch(/0x\w{64}/);
   });
-  test('public key should not equals to private key', () => {
+  test('the public key should not equal to the private key', () => {
     expect(keys.public).not.toBe(keys.private);
   });
 });
@@ -86,10 +86,10 @@ describe('test generateDigest', () => {
     '0xed77fb2d572de7526cafe6d42adccf9e347c74f0ba342de41fd1c1aa458f6a1f';
   digestMetadata = authorDigest.generate(payload);
 
-  test('digest in result should be sha256 hash', () => {
+  test('the digest in result should be sha256 hash', () => {
     expect(digestMetadata.digest).toMatch(/0x\w{64}/);
   });
-  test('digest in result should be same as the excepted', () => {
+  test('the digest in result should be the same as the excepted', () => {
     expect(digestMetadata.digest).toBe(exceptedDigest);
   });
 });
@@ -103,28 +103,28 @@ describe('test generateSignature', () => {
   const exceptedSignature =
     '0x9ab3c80768805e7842a4c1733d47e007a35bdbcdb9a5899ed5c9df6fa353cc9ddf65e9675700e921c2aa70f895c77f3b13aa119811fccbe0cbf684c40b37d880';
 
-  test('signature in result should be same as the excepted', () => {
+  test('the signature in result should be the same as the excepted', () => {
     expect(authorSignatureMetadata.signature).toBe(exceptedSignature);
   });
 });
 
 describe('test verifyDigest', () => {
   const verifiedResult = authorDigest.verify(digestMetadata);
-  test('verify digest result should be true if metadata is unchanged', () => {
+  test('verify digest result should be true if the metadata is unchanged', () => {
     expect(verifiedResult).toBe(true);
   });
 
   const digestMetadataCopy = { ...digestMetadata };
-  digestMetadataCopy.title = 'WE CHANGED THIS TITLE';
+  digestMetadataCopy.title = 'The title has been changed';
   const notVerifiedResult = authorDigest.verify(digestMetadataCopy);
-  test('verify digest result should be false if metadata is changed', () => {
+  test('verify digest result should be false if the metadata was changed', () => {
     expect(notVerifiedResult).toBe(false);
   });
 });
 
 describe('test verifySignature', () => {
   const verifiedResult = authorDigestSign.verify(authorSignatureMetadata);
-  test('verify signature result should be true if public key is correct', () => {
+  test('verify signature result should be true if the public key is correct', () => {
     expect(verifiedResult).toBe(true);
   });
 
@@ -133,7 +133,7 @@ describe('test verifySignature', () => {
   const verifiedResultSecond = authorDigestSign.verify(
     authorSignatureMetadataCopy,
   );
-  test('verify signature result should be false if metadata is changed', () => {
+  test('verify signature result should be false if the metadata was changed', () => {
     expect(verifiedResultSecond).toBe(false);
   });
 });
