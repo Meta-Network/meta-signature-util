@@ -24,19 +24,19 @@ Import the modules from the `@metaio/meta-signature-util` library, and use the `
 
 ```typescript
 // import functions and modules
-import { generateSeed, generateKeys, authorDigestSign } from '@metaio/meta-signature-util';
+import { generateSeed, generateKeys, authorPostDigestSign } from '@metaio/meta-signature-util';
 
 // generate keys and signature metadata
 const seed = generateSeed();
 const testKeys = generateKeys(seed)
-const metadata = authorDigestSign.generate(
+const metadata = authorPostDigestSign.generate(
   testKeys,
   'server_domain',
   'the_digest',
 );
 
 // verify the signature
-console.log(authorDigestSign.verify(metadata));
+console.log(authorPostDigestSign.verify(metadata));
 ```
 
 Please [check our documentation](https://meta-signature-util.vercel.app/) to learn more about the modules.
