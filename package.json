@@ -1,7 +1,7 @@
 {
-  "name": "@metaio/meta-signature-util",
+  "name": "@metaio/meta-signature-util-v2",
   "version": "2.1.0",
-  "description": "meta-signature-util",
+  "description": "meta-signature-util-v2",
   "license": "MIT",
   "keywords": [
     "signature"
