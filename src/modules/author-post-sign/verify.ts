@@ -6,10 +6,10 @@ import { AuthorPostSignatureMetadata } from 'src/type';
  * @param {AuthorPostSignatureMetadata} metadata output of the generate method to get verified
  * @returns {boolean} result
  */
-const verifyAuthorDigestMetadataSignature = (
+const verifyAuthorPostDigestMetadataSignature = (
   metadata: AuthorPostSignatureMetadata,
 ): boolean => {
   return verifySignature(metadata, { digest: metadata.digest });
 };
 
-export default verifyAuthorDigestMetadataSignature;
+export default verifyAuthorPostDigestMetadataSignature;

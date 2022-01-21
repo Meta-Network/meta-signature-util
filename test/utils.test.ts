@@ -1,13 +1,13 @@
 import crypto from 'crypto';
-import { authorDigest, authorDigestSign } from '../lib';
+import { authorPostDigest, authorPostDigestSign } from '../lib';
 import * as utils from '../lib/utils';
 import {
   KeyPair,
-  AuthorDigestMetadata,
+  AuthorPostDigestMetadata,
   AuthorPostSignatureMetadata,
 } from '../src';
 
-let digestMetadata: AuthorDigestMetadata;
+let digestMetadata: AuthorPostDigestMetadata;
 let authorSignatureMetadata: AuthorPostSignatureMetadata;
 
 Date.now = jest.fn(() => 1636198657477);
@@ -84,7 +84,7 @@ describe('test generateDigest', () => {
   };
   const exceptedDigest =
     '0xed77fb2d572de7526cafe6d42adccf9e347c74f0ba342de41fd1c1aa458f6a1f';
-  digestMetadata = authorDigest.generate(payload);
+  digestMetadata = authorPostDigest.generate(payload);
 
   test('the digest in result should be sha256 hash', () => {
     expect(digestMetadata.digest).toMatch(/0x\w{64}/);
@@ -95,7 +95,7 @@ describe('test generateDigest', () => {
 });
 
 describe('test generateSignature', () => {
-  authorSignatureMetadata = authorDigestSign.generate(
+  authorSignatureMetadata = authorPostDigestSign.generate(
     keys,
     'metaspace.life',
     digestMetadata.digest,
@@ -109,28 +109,28 @@ describe('test generateSignature', () => {
 });
 
 describe('test verifyDigest', () => {
-  const verifiedResult = authorDigest.verify(digestMetadata);
+  const verifiedResult = authorPostDigest.verify(digestMetadata);
   test('verify digest result should be true if the metadata is unchanged', () => {
     expect(verifiedResult).toBe(true);
   });
 
   const digestMetadataCopy = { ...digestMetadata };
   digestMetadataCopy.title = 'The title has been changed';
-  const notVerifiedResult = authorDigest.verify(digestMetadataCopy);
+  const notVerifiedResult = authorPostDigest.verify(digestMetadataCopy);
   test('verify digest result should be false if the metadata was changed', () => {
     expect(notVerifiedResult).toBe(false);
   });
 });
 
 describe('test verifySignature', () => {
-  const verifiedResult = authorDigestSign.verify(authorSignatureMetadata);
+  const verifiedResult = authorPostDigestSign.verify(authorSignatureMetadata);
   test('verify signature result should be true if the public key is correct', () => {
     expect(verifiedResult).toBe(true);
   });
 
   const authorSignatureMetadataCopy = { ...authorSignatureMetadata };
   authorSignatureMetadataCopy.claim = 'another claim';
-  const verifiedResultSecond = authorDigestSign.verify(
+  const verifiedResultSecond = authorPostDigestSign.verify(
     authorSignatureMetadataCopy,
   );
   test('verify signature result should be false if the metadata was changed', () => {

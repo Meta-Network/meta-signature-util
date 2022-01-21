@@ -1,4 +1,4 @@
-import { AuthorDigestMetadata, BaseSignatureMetadata } from 'src/type';
+import { BaseSignatureMetadata } from 'src/type';
 
 /**
  * Bind the author's digest metadata (with post metadata and content)
@@ -9,7 +9,7 @@ import { AuthorDigestMetadata, BaseSignatureMetadata } from 'src/type';
  * @returns {BaseSignatureMetadata} server's signed verification metadata with the reference
  */
 const generateAuthorDigestSignWithContentServerVerificationMetadata = (
-  authorDigestMetadata: AuthorDigestMetadata,
+  authorDigestMetadata: BaseSignatureMetadata,
   authorDigestMetadataRefer: string,
   serverVerificationSignatureMetadata: BaseSignatureMetadata,
 ): BaseSignatureMetadata => {

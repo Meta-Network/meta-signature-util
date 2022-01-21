@@ -1,4 +1,4 @@
-import { BaseSignatureMetadata } from './utils';
+import { BaseSignatureMetadata } from '@/src';
 
 export type PostMetadata = {
   title: string;
@@ -10,9 +10,9 @@ export type PostMetadata = {
   tags: string;
 };
 
-export type AuthorDigestMetadata = {
+export type AuthorPostDigestMetadata = {
   '@context': 'https://metanetwork.online/ns/cms';
-  '@type': 'author-digest';
+  '@type': 'author-post-digest';
   '@version': string;
   algorithm: 'sha256' | 'sha512';
   title: string;
