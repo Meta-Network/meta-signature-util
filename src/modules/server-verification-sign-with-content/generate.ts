@@ -3,20 +3,20 @@ import { BaseSignatureMetadata } from 'src/type';
 /**
  * Bind the author's digest metadata (with post metadata and content)
  * to the server's verification's reference.
- * @param authorDigestMetadata metadata and generated digest of the author's post
- * @param authorDigestMetadataRefer URI reference to the author's post digest metadata
+ * @param authorPostDigestMetadata metadata and generated digest of the author's post
+ * @param authorPostDigestMetadataRefer URI reference to the author's post digest metadata
  * @param serverVerificationSignatureMetadata server's signed verification metadata
  * @returns {BaseSignatureMetadata} server's signed verification metadata with the reference
  */
 const generateAuthorDigestSignWithContentServerVerificationMetadata = (
-  authorDigestMetadata: BaseSignatureMetadata,
-  authorDigestMetadataRefer: string,
+  authorPostDigestMetadata: BaseSignatureMetadata,
+  authorPostDigestMetadataRefer: string,
   serverVerificationSignatureMetadata: BaseSignatureMetadata,
 ): BaseSignatureMetadata => {
   serverVerificationSignatureMetadata.reference.unshift({
-    refer: authorDigestMetadataRefer,
+    refer: authorPostDigestMetadataRefer,
     rel: 'content',
-    body: authorDigestMetadata,
+    body: authorPostDigestMetadata,
   });
   return serverVerificationSignatureMetadata;
 };
