@@ -1,6 +1,6 @@
 {
   "name": "@metaio/meta-signature-util",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "meta-signature-util",
   "license": "MIT",
   "keywords": [
@@ -11,11 +11,13 @@
     "build:docs": "typedoc --out docs src/index.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint --fix . --ext .ts",
+    "clean": "rimraf lib",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "test": "tsc && npx tsc-alias && jest"
+    "test": "npm run build && jest",
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "dependencies": {
     "curve25519-js": "^0.0.4",
@@ -34,6 +36,7 @@
     "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
     "tsc-alias": "^1.4.1",
