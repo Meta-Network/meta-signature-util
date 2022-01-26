@@ -9,8 +9,10 @@ import { BaseSignatureMetadata } from 'src/type';
 const verifyServerMetadataSignature = (
   metadata: BaseSignatureMetadata,
 ): boolean => {
+  const last = metadata.reference.length - 1;
   return verifySignature(metadata, {
-    signature: (metadata.reference.pop().body as BaseSignatureMetadata).signature,
+    signature: (metadata.reference[last].body as BaseSignatureMetadata)
+      .signature,
   });
 };
 
