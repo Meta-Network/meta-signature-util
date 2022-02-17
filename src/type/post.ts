@@ -23,11 +23,11 @@ export type AuthorPostDigestMetadata = {
   summary: string;
   tags: string;
   digest: string;
-  nonce: string;
-  claim: string;
   ts: number;
 };
 
 export type AuthorPostSignatureMetadata = BaseSignatureMetadata & {
   digest: string;
+  nonce: string;
+  claim: string;
 };
