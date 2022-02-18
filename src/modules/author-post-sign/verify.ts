@@ -8,8 +8,6 @@ import { AuthorPostSignatureMetadata } from 'src/type';
  */
 const verifyAuthorPostDigestMetadataSignature = (
   metadata: AuthorPostSignatureMetadata,
-): boolean => {
-  return verifySignature(metadata, { digest: metadata.digest });
-};
+): boolean => verifySignature(metadata, { digest: metadata.digest });
 
 export default verifyAuthorPostDigestMetadataSignature;
